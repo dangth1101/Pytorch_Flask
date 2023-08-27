@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Headline -->
+    <div class="mb-4">
+        <h3 class="headline-blur my-1">Photo</h3>
+        <h2 class="headline-bold my-1">Gallery</h2>
+    </div>
+
+    <!-- Two Columns of Photos -->
+    <div class="container mb-4">
+        {% for row in range(2) %}
+        <div class="row mb-3">
+            {% for col in range(5) %}
+            <div class="col">
+                <img src="{{ url_for('static', filename='img/car' ~ ((row * 5) + col + 1) ~ '.jpg') }}" alt="Car Image {{ ((row * 5) + col + 1) }}" class="img-fluid">
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-4">
+        <h2 class="headline-blur my-1">Submit</h2>
+        <h3 class="headline-bold my-1">Photo</h3>
+    </div>
+
+    <!-- Models List -->
+    <div class="scrollable-container mt-4">
+        {% for model in models %}
+            <div class="scrollable-item text-center mb-3">
+                <img src="{{ url_for('static', filename='img/model.png') }}" alt="Model {{ model|capitalize }}" class="img-fluid">
+                <h3>{{ model|capitalize }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+
+{% endblock %}

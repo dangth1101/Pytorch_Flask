@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+
+        <!-- Upload Sections Row -->
+        <div class="row g-4">
+            
+            <!-- Left Upload Section -->
+            <div class="col">
+                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input-left').trigger('click')">Add Image</button>
+
+                <div class="image-upload-wrap">
+                    <input class="file-upload-input file-upload-input-left" type='file' onchange="readURL(this);" accept="image/*" name="file" />
+                    <div class="drag-text">
+                        <h3>Drag and drop a file or select add Image</h3>
+                    </div>
+                </div>
+
+                <div class="file-upload-content" style="display:none;">
+                    <img class="file-upload-image" src="#" alt="Uploaded Image">
+                </div>
+            </div>
+
+            <!-- Right Upload Section -->
+            <div class="col">
+                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input-right').trigger('click')">Add Image</button>
+
+                <div class="image-upload-wrap">
+                    <input class="file-upload-input file-upload-input-right" type='file' onchange="readURL(this);" accept="image/*" name="file" />
+                    <div class="drag-text">
+                        <h3>Drag and drop a file or select add Image</h3>
+                    </div>
+                </div>
+
+                <div class="file-upload-content" style="display:none;">
+                    <img class="file-upload-image" src="#" alt="Uploaded Image">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Check Button Row -->
+        <div class="row mt-4">
+            <div class="col text-center">
+                <button class="check-btn btn-primary w-25">Check</button>
+            </div>
+        </div>
+
+        <div class="check-container mt-5">
+            <table id="results-table" class="table table-bordered mx-auto">
+                <thead>
+                    <tr>
+                        <th>Indicator</th>
+                        <th>Value</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows from AJAX will be appended here -->
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
+
+{% endblock %}
